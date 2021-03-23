@@ -1,4 +1,4 @@
-module.exorts = (client) => {
+module.exports = (client) => {
     const channelId = '797683010115600395' // welcome channel
     const targetChannelId = '812818387276791888' // rules and info
 
