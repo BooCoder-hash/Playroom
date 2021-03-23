@@ -3,6 +3,8 @@ const client = new Discord.Client()
 
 const config = require('./config.json')
 const command = require('./command')
+const welcome = require('./welcome')
+
 
 client.on('ready', () => {
   console.log('The client is ready')
@@ -15,37 +17,39 @@ client.on('ready', () => {
     client.guilds.cache.forEach((guild) => {
       message.channel.send(
         `${guild.name} has a total of ${guild.memberCount} roleplayers`
-        )   
-    }) 
-  })  
-  
+      )
+    })
+  })
+
   command(client, ['cc', 'clearchannel'], (message) => {
     if (message.member.hasPermission('ADMINISTRATOR')) {
       message.channel.messages.fetch().then((results) => {
         message.channel.bulkDelete(results)
-      })  
+      })
     }
   })
 
   command(client, 'status', (message) => {
     const content = message.content.replace('//status ', '')
-    
+
     client.user.setPresence({
       activity: {
-        name: content, 
+        name: content,
         type: 0,
       },
     })
-  })    
+  })
 
 
 
 
 
+
+  roleClaim(client)
 })
 
-    
-    
+
+
 
 
 
@@ -53,3 +57,4 @@ client.on('ready', () => {
 
 
 client.login(config.token)
+
