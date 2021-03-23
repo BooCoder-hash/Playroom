@@ -45,7 +45,6 @@ client.on('ready', () => {
 
 
 
-  roleClaim(client)
 })
 
 
